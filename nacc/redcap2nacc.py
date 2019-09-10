@@ -16,6 +16,7 @@ from nacc.uds3 import blanks
 from nacc.uds3.ivp import builder as ivp_builder
 from nacc.uds3.np import builder as np_builder
 from nacc.uds3.fvp import builder as fvp_builder
+from nacc.uds3.tfp import builder as tfp_builder
 from nacc.uds3 import filters
 
 
@@ -152,6 +153,8 @@ def convert(fp, options, out=sys.stdout, err=sys.stderr):
                 packet = np_builder.build_uds3_np_form(record)
             elif options.fvp:
                 packet = fvp_builder.build_uds3_fvp_form(record)
+            elif options.tfp:
+                packet = tfp_builder.build_uds3_tfp_form(record)
 
         except Exception:
             if 'ptid' in record:
@@ -159,7 +162,7 @@ def convert(fp, options, out=sys.stdout, err=sys.stderr):
             traceback.print_exc()
             continue
 
-        if not options.np:
+        if not options.np:  # tfp needs to ser blanks
             set_blanks_to_zero(packet)
 
         warnings = []
@@ -204,6 +207,7 @@ def parse_args(args=None):
     option_group.add_argument('-ivp', action='store_true', dest='ivp', help='Set this flag to process as ivp data')
     option_group.add_argument('-np', action='store_true', dest='np', help='Set this flag to process as np data')
     option_group.add_argument('-f', '--filter', action='store', dest='filter', choices=filters_names.keys(), help='Set this flag to process the filter')
+    option_group.add_argument('-tfp', action='store_true', dest='tfp', help='Sef this flag to process as tfp')
 
     parser.add_argument('-file', action='store', dest='file', help='Path of the csv file to be processed.')
     parser.add_argument('-meta', action='store', dest='filter_meta', help='Input file for the filter metadata (in case -filter is used)')
@@ -214,7 +218,7 @@ def parse_args(args=None):
     options = parser.parse_args(args)
     # Defaults to processing of ivp.
     # TODO this can be changed in future to process fvp by default.
-    if not (options.ivp or options.fvp or options.np or options.filter):
+    if not (options.ivp or options.fvp or options.np or options.filter or options.tfp):
         options.ivp = True
 
     return options
