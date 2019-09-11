@@ -630,13 +630,13 @@ class FormD1(nacc.uds3.FieldBag):
         self.fields['COGOTH2F'] = nacc.uds3.Field(name='COGOTH2F', typename='Num', position=(649, 649), length=1, inclusive_range=(1, 3), allowable_values=['3', '2', '1'], blanks=['Blank if Question 38 COGOTH2 ne 1 (Present)', 'Blank if Question 2 NORMCOG = 1 (Yes)'])
         self.fields['COGOTH2X'] = nacc.uds3.Field(name='COGOTH2X', typename='Char', position=(651, 710), length=60, inclusive_range=None, allowable_values=[], blanks=['Blank if Question 38 COGOTH2 ne 1 (Present)'])
         self.fields['COGOTH3'] = nacc.uds3.Field(name='COGOTH3', typename='Num', position=(712, 712), length=1, inclusive_range=(0, 1), allowable_values=['1', '0'], blanks=[])
+        self.fields['COGOTH3F'] = nacc.uds3.Field(name='COGOTH3F', typename='Num', position=(714, 714), length=1, inclusive_range=(1, 3), allowable_values=['3', '2', '1'], blanks=['Blank if Question 39 COGOTH3 ne 1', 'Blank if Question 2 NORMCOG = 1 (Yes)'])
+        self.fields['COGOTH3X'] = nacc.uds3.Field(name='COGOTH3X', typename='Char', position=(716, 775), length=60, inclusive_range=None, allowable_values=[], blanks=['Blank if Question 39 COGOTH3 ne 1'])
 
 
 class FormD2(nacc.uds3.FieldBag):
     def __init__(self):
         self.fields = header_fields()
-        self.fields['COGOTH3F'] = nacc.uds3.Field(name='COGOTH3F', typename='Num', position=(714, 714), length=1, inclusive_range=(1, 3), allowable_values=['3', '2', '1'], blanks=['Blank if Question 39 COGOTH3 ne 1', 'Blank if Question 2 NORMCOG = 1 (Yes)'])
-        self.fields['COGOTH3X'] = nacc.uds3.Field(name='COGOTH3X', typename='Char', position=(716, 775), length=60, inclusive_range=None, allowable_values=[], blanks=['Blank if Question 39 COGOTH3 ne 1'])
         self.fields['CANCER'] = nacc.uds3.Field(name='CANCER', typename='Num', position=(45, 45), length=1, inclusive_range=(0, 2), allowable_values=['2', '1', '0', '8'], blanks=[])
         self.fields['CANCSITE'] = nacc.uds3.Field(name='CANCSITE', typename='Char', position=(47, 106), length=60, inclusive_range=None, allowable_values=[], blanks=['Blank if Question 1 CANCER = 0 (No)', 'Blank if Question 1 CANCER = 8 (Not assessed)'])
         self.fields['DIABET'] = nacc.uds3.Field(name='DIABET', typename='Num', position=(108, 108), length=1, inclusive_range=(0, 3), allowable_values=['2', '1', '0', '9', '3'], blanks=[])

@@ -64,6 +64,7 @@ The program accepts two arguments -file and -(ivp|fvp|np). Both the arguments ar
       -fvp                  Set this flag to process as fvp data
       -ivp                  Set this flag to process as ivp data
       -np                   Set this flag to process as np data
+      -tfp                  Set this flag to process as tfp data
       -f {cleanPtid,updateField,fixHeaders,replaceDrugId,getPtid,removePtid,fillDefault,removeDateRecord}, --filter {cleanPtid,updateField,fixHeaders,replaceDrugId,getPtid,removePtid,fillDefault,removeDateRecord}
                             Set this flag to process the filter
       -file FILE            Path of the csv file to be processed.
