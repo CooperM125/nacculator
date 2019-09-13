@@ -48,7 +48,7 @@ def build_uds3_tfp_form(record):
     a2.INRASEC = record['tele_inrasec']
     a2.INRASECX = record['tele_inrasecx']
     a2.INRATER = record['tele_inrater']
-    a2.INRATERX = record['tele_intaterx']
+    a2.INRATERX = record['tele_inraterx']
     a2.INEDUC = record['tele_ineduc']
     a2.INRELTO = record['tele_inrelto']
     a2.INKNOWN = record['tele_inknown']
@@ -87,7 +87,7 @@ def build_uds3_tfp_form(record):
     a3.DADPRDX = record['tele_dadprdx']
     a3.DADMOE = record['tele_dadmoe']
     a3.DADAGEO = record['tele_dadageo']
-    a3.SIBS = record['tele_sibs']
+    a3.SIBS = record['tele_sibs']  # check to see how many sibs
     a3.NWINFSIB = record['tele_nwinfsib']
     a3.SIB1MOB = record['tele_sib1mob']
     a3.SIB1YOB = record['tele_sib1yob']
@@ -110,7 +110,7 @@ def build_uds3_tfp_form(record):
     a3.SIB3PDX = record['tele_sib3pdx']
     a3.SIB3MOE = record['tele_sib3moe']
     a3.SIB3AGO = record['tele_sib3ago']
-    a3.SIB4MOB = record['tele_sib4mbo']
+    a3.SIB4MOB = record['tele_sib4mob']
     a3.SIB4YOB = record['tele_sib4yob']
     a3.SIB4AGD = record['tele_sib4agd']
     a3.SIB4NEU = record['tele_sib4neu']
@@ -229,7 +229,7 @@ def build_uds3_tfp_form(record):
     a3.SIB20PDX = record['tele_sib20pdx']
     a3.SIB20MOE = record['tele_sib20moe']
     a3.SIB20AGO = record['tele_sib20ago']
-    a3.KIDS = record['tele_kids']
+    a3.KIDS = record['tele_kids']  # check to see number of kids ?
     a3.NWINFKID = record['tele_nwinfkid']
     a3.KID1MOB = record['tele_kid1mob']
     a3.KID1YOB = record['tele_kid1yob']
@@ -289,7 +289,7 @@ def build_uds3_tfp_form(record):
     a3.KID8AGO = record['tele_kid8ago']
     a3.KID9MOB = record['tele_kid9mob']
     a3.KID9YOB = record['tele_kid9yob']
-    a3.KID9AGD = record['tele_kid9agd']
+    a3.KID9AGD = record['tele_kid9agd']  # telekidagd
     a3.KID9NEU = record['tele_kid9neu']
     a3.KID9PDX = record['tele_kid9pdx']
     a3.KID9MOE = record['tele_kid9moe']
@@ -409,14 +409,14 @@ def build_uds3_tfp_form(record):
     b7.TRAVEL = record['tele_travel']
     packet.append(b7)
 
-    b9 = tfp_forms.FormB7()
+    b9 = tfp_forms.FormB9()
     b9.DECSUB = record['tele_decsub']
     b9.DECIN = record['tele_decin']
     b9.DECCLCOG = record['tele_decclcog']
     b9.COGMEM = record['tele_cogmem']
     b9.COGORI = record['tele_cogori']
     b9.COGJUDG = record['tele_cogjudg']
-    b9.COGLANG = record['tele_cogland']
+    b9.COGLANG = record['tele_coglang']
     b9.COGVIS = record['tele_cogvis']
     b9.COGATTN = record['tele_cogattn']
     b9.COGFLUC = record['tele_cogfluc']
@@ -637,30 +637,33 @@ def build_uds3_tfp_form(record):
     d2.OTHCOND = record['tele_othcond']
     d2.OTHCONDX = record['tele_othcondx']
     packet.append(d2)
-    # z1 was replaced by z1x
+    #  z1 was replaced by z1x
     z1x = tfp_forms.FormZ1X()
-    z1x.LANGT1 = record['tele_langt1']
-    z1x.LANGA1 = record['tele_langa1']
-    z1x.LANGA2 = record['tele_langa2']
-    z1x.LANGA3 = record['tele_langa3']
-    z1x.A3SUB = record['tele_a3sub']
-    z1x.A3NOT = record['tele_a3not']
-    z1x.LANGA4 = record['tele_langa4']
-    z1x.A4SUB = record['tele_a4sub']
-    z1x.A4NOT = record['tele_a4not']
-    z1x.LANGB4 = record['tele_langb4']
-    z1x.LANGB5 = record['tele_langb5']
-    z1x.B5SUB = record['tele_b5sub']
-    z1x.B5NOT = record['tele_b5not']
-    z1x.LANGB7 = record['tele_langb7']
-    z1x.B7SUB = record['tele_b7sub']
-    z1x.B7NOT = record['tele_b7not']
-    z1x.LANGB9 = record['tele_langb9']
-    z1x.LANGD1 = record['tele_langd1']
-    z1x.LANGD2 = record['tele_langd2']
-    z1x.LANGCLS = record['tele_langcls']
-    z1x.CLSSUB = record['tele_clssub']
+    z1x.LANGT1 = record['tele_langt1_z1x']
+    z1x.LANGA1 = record['tele_langa1_z1x']
+    z1x.LANGA2 = record['tele_langa2_z1x']
+    z1x.LANGA3 = record['tele_langa3_z1x']
+    z1x.A3SUB = record['tele_a3sub_z1x']
+    z1x.A3NOT = record['tele_a3not_z1x']
+    z1x.LANGA4 = record['tele_langa4_z1x']
+    z1x.A4SUB = record['tele_a4sub_z1x']
+    z1x.A4NOT = record['tele_a4not_z1x']
+    z1x.LANGB4 = record['tele_langb4_z1x']
+    z1x.LANGB5 = record['tele_langb5_z1x']
+    z1x.B5SUB = record['tele_b5sub_z1x']
+    z1x.B5NOT = record['tele_b5not_z1x']
+    z1x.LANGB7 = record['tele_langb7_z1x']
+    z1x.B7SUB = record['tele_b7sub_z1x']
+    z1x.B7NOT = record['tele_b7not_z1x']
+    z1x.LANGB9 = record['tele_langb9_z1x']
+    z1x.LANGD1 = record['tele_langd1_z1x']
+    z1x.LANGD2 = record['tele_langd2_z1x']
+    z1x.LANGCLS = record['tele_langcls_z1x']
+    z1x.CLSSUB = record['tele_clssub_z1x']
     packet.append(z1x)
+
+    update_header(record, packet)
+    return packet
 
 def update_header(record, packet):
     for header in packet:

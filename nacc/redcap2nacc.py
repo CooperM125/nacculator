@@ -99,24 +99,24 @@ def set_blanks_to_zero(packet):
             field = packet[field_name]
             if empty(field):
                 field.value = 0
+    if packet['PACKET'] != 'T':
+        # B8 2.
+        if packet['PARKSIGN'] == 1:
+            set_to_zero_if_blank(
+                'RESTTRL', 'RESTTRR', 'SLOWINGL', 'SLOWINGR', 'RIGIDL', 'RIGIDR',
+                'BRADY', 'PARKGAIT', 'POSTINST')
 
-    # B8 2.
-    if packet['PARKSIGN'] == 1:
-        set_to_zero_if_blank(
-            'RESTTRL', 'RESTTRR', 'SLOWINGL', 'SLOWINGR', 'RIGIDL', 'RIGIDR',
-            'BRADY', 'PARKGAIT', 'POSTINST')
+        # B8 3.
+        if packet['CVDSIGNS'] == 1:
+            set_to_zero_if_blank('CORTDEF', 'SIVDFIND', 'CVDMOTL', 'CVDMOTR',
+                                 'CORTVISL', 'CORTVISR', 'SOMATL', 'SOMATR')
 
-    # B8 3.
-    if packet['CVDSIGNS'] == 1:
-        set_to_zero_if_blank('CORTDEF', 'SIVDFIND', 'CVDMOTL', 'CVDMOTR',
-                             'CORTVISL', 'CORTVISR', 'SOMATL', 'SOMATR')
-
-    # B8 5.
-    if packet['PSPCBS'] == 1:
-        set_to_zero_if_blank(
-            'PSPCBS', 'EYEPSP', 'DYSPSP', 'AXIALPSP', 'GAITPSP', 'APRAXSP',
-            'APRAXL', 'APRAXR', 'CORTSENL', 'CORTSENR', 'ATAXL', 'ATAXR',
-            'ALIENLML', 'ALIENLMR', 'DYSTONL', 'DYSTONR')
+        # B8 5.
+        if packet['PSPCBS'] == 1:
+            set_to_zero_if_blank(
+                'PSPCBS', 'EYEPSP', 'DYSPSP', 'AXIALPSP', 'GAITPSP', 'APRAXSP',
+                'APRAXL', 'APRAXR', 'CORTSENL', 'CORTSENR', 'ATAXL', 'ATAXR',
+                'ALIENLML', 'ALIENLMR', 'DYSTONL', 'DYSTONR')
 
     # D1 4.
     if packet['DEMENTED'] == 1:
